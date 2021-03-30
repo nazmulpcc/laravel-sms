@@ -2,7 +2,11 @@
 
 namespace Nazmulpcc\LaravelSms\Providers;
 
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Nazmulpcc\LaravelSms\Facades\LaravelSms as LaravelSmsFacade;
+use Nazmulpcc\LaravelSms\LaravelSms;
 
 class LaravelSmsServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,13 @@ class LaravelSmsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/../../config/laravel-sms.php' => config_path('laravel-sms.php')
+        ]);
+
+        Event::listen(Registered::class, function(Registered $event){
+            $event->user->sendPhoneVerificationNotification();
+        });
     }
 
     /**
@@ -23,6 +33,12 @@ class LaravelSmsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->alias(LaravelSms::class, LaravelSmsFacade::class);
+        $this->app->alias(LaravelSms::class, 'laravel-sms');
+        $this->app->singleton(LaravelSms::class, function(){
+            return new LaravelSms(config('laravel-sms.driver'));
+        });
+
+//        $this->loadRoutesFrom(__DIR__ . '/../routes.php');
     }
 }
