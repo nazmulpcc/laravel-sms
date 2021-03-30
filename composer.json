@@ -1,0 +1,29 @@
+{
+    "name": "nazmulpcc/laravel-sms",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nazmulpcc",
+            "email": "nazmulpcc@yourdomain.com"
+        }
+    ],
+    "autoload": {
+            "psr-4": {
+                "Nazmulpcc\\LaravelSms\\": "src/"
+            }
+        },
+    "require": {},
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nazmulpcc\\LaravelSms\\LaravelSmsServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}
