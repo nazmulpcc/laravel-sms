@@ -19,10 +19,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nazmulpcc\\LaravelSms\\LaravelSmsServiceProvider"
+                "Nazmulpcc\\LaravelSms\\Providers\\LaravelSmsServiceProvider"
             ],
             "aliases": {
-
+                "LaravelSms": "Nazmulpcc\\LaravelSms\\LaravelSms"
             }
         }
     }
