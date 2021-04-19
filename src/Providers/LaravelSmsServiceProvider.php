@@ -5,6 +5,7 @@ namespace Nazmulpcc\LaravelSms\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Nazmulpcc\LaravelSms\Contracts\MustVerifyPhone;
 use Nazmulpcc\LaravelSms\Facades\LaravelSms as LaravelSmsFacade;
 use Nazmulpcc\LaravelSms\LaravelSms;
 
@@ -22,6 +23,7 @@ class LaravelSmsServiceProvider extends ServiceProvider
         ]);
 
         Event::listen(Registered::class, function(Registered $event){
+            $event->user instanceof MustVerifyPhone &&
             $event->user->sendPhoneVerificationNotification();
         });
     }
