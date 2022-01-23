@@ -43,7 +43,7 @@ class Ajuratech extends Service
     public function send($target, $message)
     {
         $this->response = $this->getClient()
-            ->get('https://smpp.ajuratech.com:7790/sendtext', [
+            ->get('http://apismpp.ajuratech.com/sendtext', [
                 'apikey' => $this->apiKey,
                 'secretkey' => $this->secretKey,
                 'callerID' => $this->callerId,
