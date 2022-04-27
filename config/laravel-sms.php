@@ -8,6 +8,9 @@ return [
             'api_key' => env('AJURATECH_API_KEY'),
             'secret_key' => env('AJURATECH_SECRET_KEY'),
             'caller_id' => env('AJURATECH_CALLER_ID'),
+        ],
+        'log' => [
+            'handler' => \Nazmulpcc\LaravelSms\Services\LocalSms::class,
         ]
     ]
 ];
