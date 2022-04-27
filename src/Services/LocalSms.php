@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services;
+namespace Nazmulpcc\LaravelSms\Services;
 
 
 use Illuminate\Support\Facades\Log;
